@@ -1,0 +1,13 @@
+# github actionsの方は20-30分ぐらい遅延することがある
+name: cron test
+on:
+  schedule:
+    - cron: "30 2 * * 0-4"
+
+jobs:
+  test_schedule:
+    name: schedule-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every time
+        run: echo "this is cron test"
