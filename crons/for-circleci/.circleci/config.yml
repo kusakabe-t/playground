@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  cron_test:
+    docker:
+      - image: cimg/node:14.17.6
+    steps:
+      - run:
+          name: set environment variables
+          command: echo "cron test"
+workflows:
+  scheduled_cron_test:
+    triggers:
+      - schedule:
+          cron: "47 1 * * 0-4"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - cron_test
