@@ -9,10 +9,24 @@ import github from "prism-react-renderer/themes/github"
 
 import { getAllContents, getContentBySlug } from "../../libs/getContents";
 
+type ImagePropsType = {
+		alt: string
+		src: string
+		width: number
+		height: number
+}
+
+const CustomImage = (props: ImagePropsType) => {
+		const src = props.src.replace(/^\.\./, "")
+		console.warn('src', src)
+
+		return <Image alt={props.alt} src={src} width={props.width} height={props.height} />
+}
+
 const SnippetDetailsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ title, date, content }) => {
 		const components = {
 				code: CodeBlock,
-				Image
+				img: CustomImage
 		}
 
 		return (
