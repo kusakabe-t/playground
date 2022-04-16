@@ -1,6 +1,16 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+})
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false
+    }
+    return config
+  },
+  withMDX: withMDX({
+    pageExtensions: ["ts", "tsx", "md", "mdx"],
+  }),
+}
