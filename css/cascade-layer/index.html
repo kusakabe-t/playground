@@ -1,0 +1,27 @@
+<main>
+  <div id="color-box" class="box"></div>
+</main>
+
+<style>
+.box{
+  width:300px;height:300px;border:2px solid #000
+}
+
+@layer component, page, base;
+
+@layer page {
+  .box {
+    background: palegreen;
+  }
+}
+@layer base {
+  .box {
+    background: rebeccapurple;
+  }
+}
+@layer component {
+ .box {
+    background: hotpink;
+  }
+}
+</style>
