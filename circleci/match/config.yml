@@ -1,0 +1,16 @@
+# ブランチ名がmasterだったら、実行するコード
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/node:14.10.1
+    steps:
+      - run: echo "start"
+      - when:
+          condition:
+            matches:
+              pattern: "^master$"
+              value: << pipeline.git.branch >>
+          steps:
+            - run: echo "pattern match!"
+      - run: echo "end"
