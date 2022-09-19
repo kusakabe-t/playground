@@ -1,0 +1,13 @@
+# cf. https://circleci.com/developer/orbs/orb/circleci/path-filtering
+version: 2.1
+setup: true
+orbs:
+  path-filtering: circleci/path-filtering@0.0.1
+workflows:
+  generate-config:
+    jobs:
+      - path-filtering/filter:
+          base-revision: << pipeline.git.branch >>
+          config-path: .circleci/echo.yml
+          mapping: |
+            samples/mapping/docs/.* build-docs true

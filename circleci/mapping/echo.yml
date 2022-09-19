@@ -1,0 +1,16 @@
+version: 2.1
+parameters:
+  build-docs:
+    type: boolean
+    default: false
+jobs:
+  echo_sample:
+    docker:
+      - image: cimg/node:14.10.1
+    steps:
+      - run: echo "file changed!!!"
+workflows:
+  echo_sample:
+    when: << pipeline.parameters.build-docs >>
+    jobs:
+      - echo_sample
