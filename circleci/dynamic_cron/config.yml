@@ -1,0 +1,26 @@
+# cf. https://circleci.com/developer/orbs/orb/circleci/continuation
+version: 2.1
+setup: true
+parameters:
+  scheduled_pipeline:
+    type: boolean
+    default: false
+orbs:
+  continuation: circleci/continuation@0.3.1
+jobs:
+  echo_sample1:
+    docker:
+      - image: cimg/node:14.10.1
+    steps:
+      - run: echo "hello world"
+workflows:
+  scheduled_test:
+    when: << pipeline.parameters.scheduled_pipeline >>
+    jobs:
+      - echo_sample1
+      - continuation/continue:
+          name: 'start dynamic config'
+          configuration_path: .circleci/echo.yml
+          filters:
+            branches:
+              only: feat/scheduled_pipeline

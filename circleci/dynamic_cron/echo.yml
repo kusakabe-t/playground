@@ -1,0 +1,17 @@
+version: 2.1
+# config.ymlから渡される引数を受け取れるようにしておく。そうしないと、何故か以下のエラーが発生する
+# Unexpected argument(s): scheduled_pipeline
+parameters:
+  scheduled_pipeline:
+    type: boolean
+    default: false
+jobs:
+  echo_sample2:
+    docker:
+      - image: cimg/node:14.10.1
+    steps:
+      - run: echo "dynamic config scheduled job!!"
+workflows:
+  scheduled_test:
+    jobs:
+      - echo_sample2
