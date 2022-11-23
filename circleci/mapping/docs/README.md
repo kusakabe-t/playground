@@ -1,2 +1,2 @@
 # path-filteringのテスト
-docs配下のファイルが変わるとCircleCIが実行される
+docs配下のファイルが変わるとJobが発火
