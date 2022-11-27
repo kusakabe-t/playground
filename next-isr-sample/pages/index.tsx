@@ -5,6 +5,7 @@ export const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <main style={{padding: '16px'}}>
+        <div>ビルド時間: {buildTime}</div>
         <div>
           <Link href="/isr-page">ISRで生成されたページへのリンク (prefetch有効)</Link>
         </div>
