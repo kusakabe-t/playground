@@ -1,0 +1,17 @@
+{
+  "name": "pnpm-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    // このコマンドは pnpm run cowsay-testで実行する
+    "cowsay-test": "cowsay Hello",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "kusakabe-t",
+  "license": "ISC",
+  "devDependencies": {
+    "cowsay": "^1.5.0"
+  }
+}
